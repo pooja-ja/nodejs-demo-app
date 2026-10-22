@@ -3,7 +3,7 @@ name: CI with DevSecOps
 
 on:
     push:
-        branches: [master]
+        branches: [main]
 
 jobs:
 
