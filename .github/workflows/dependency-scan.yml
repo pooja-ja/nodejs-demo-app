@@ -1,0 +1,28 @@
+name: Dependecy scan
+
+on:
+    workflow_call:
+
+jobs:
+    dependency-scan:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+            
+            - name: Setup Node
+              uses: actions/setup-node@v6
+              with:
+                node-version: '20'
+                cache: npm
+
+            - name: Run Dependency Scan for Node
+              run: npm audit
+
+            - name: Upload Report to Artifacts
+              if: always() # Ensures report uploads even if tests fail
+              uses: actions/upload-artifact@v4
+              with:
+                name: dependency-scan-report
+                path: reports/dependency-report.txt
+                retention-days: 5
