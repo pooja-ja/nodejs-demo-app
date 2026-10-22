@@ -43,7 +43,7 @@ Make sure you have the following installed:
 | `Docker scan` | Checkout → setup Node 20 → Docker file lint → Docker build → Trivy vulnerability scan |
 | `test` | Checkout → setup Node 20 → `npm install` → `npm test` |
 | `build-and-push` | (needs `test`) Buildx → Docker Hub login → build image → push `<commit-sha>` tags |
-| `deploy on push` | (needs `build and push`) → Docker Hub login → Deploy with docker compose → push `<commit-sha>` tags |
+| `deploy on push` | (needs `build and push`) → Docker Hub login → Deploy with docker compose on self hosted runner → push `<commit-sha>` tags |
 
 Trigger: push to `main` (plus `workflow_call`).
 
