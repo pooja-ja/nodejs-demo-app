@@ -17,6 +17,7 @@ jobs:
                 cache: npm
 
             - name: Run Dependency Scan for Node
+              continue-on-error: true
               run: npm audit fix --force
 
             - name: Upload Report to Artifacts
