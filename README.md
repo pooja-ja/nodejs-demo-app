@@ -4,6 +4,7 @@ This repository contains a Node.js application packaged with Docker and managed 
 
 ## 📁 Project Structure
 ```
+├── .github/workflows/main.yml   # CI/CD pipeline
 ├── app
 │ ├── public
 │ │ └── styles
@@ -13,6 +14,7 @@ This repository contains a Node.js application packaged with Docker and managed 
 │     └── views
 │         └── index.ejs
 ├── app.js
+
 ├── docker-compose.yml
 ├── Dockerfile
 ├── package-lock.json
@@ -33,20 +35,24 @@ Make sure you have the following installed:
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/)
 
-### 📦 Build and Run with Docker Compose
+## Pipeline (`.github/workflows/main.yml`)
+| Job | What it does |
+|---|---|
+| `Secret scan` | Checkout → gitleaks for secret scanning |
+| `Dependency scan` | Checkout → setup Node 20 → Dependency scan → upload reports to artifacts |
+| `Docker scan` | Checkout → setup Node 20 → Docker file lint → Docker build → Trivy vulnerability scan |
+| `test` | Checkout → setup Node 20 → `npm install` → `npm test` |
+| `build-and-push` | (needs `test`) Buildx → Docker Hub login → build image → push `<commit-sha>` tags |
+| `deploy on push` | (needs `build and push`) → Docker Hub login → Deploy with docker compose → push `<commit-sha>` tags |
 
-1. **Clone the repository**:
+Trigger: push to `main` (plus `workflow_call`).
 
-```bash
-git clone https://github.com/acemilyalcin/sample-node-project.git
-cd sample-node-project
-```
-
-2. **Start application**
-
-```bash
-docker-compose up --build
-```
+## Setup
+1. Create a Docker Hub account and an **access token** (Account Settings → Security).
+2. In the GitHub repo: **Settings → Secrets and variables → Actions → New repository secret**
+   - `DOCKERHUB_USERNAME` — your Docker Hub username
+   - `DOCKERHUB_TOKEN` — the access token
+3. Push to `main` and watch the **Actions** tab.
 
 3. **Access the application**
 
