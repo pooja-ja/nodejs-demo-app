@@ -9,12 +9,13 @@
     "test": "jest --watch"
   },
   "author": "Adem Cemil YALCIN",
-  "license": "ISC",
+  "license": "ISC", 
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "eslint": "^8.56.0",
     "jest": "^30.2.0",
     "supertest": "^7.1.4"
   }
