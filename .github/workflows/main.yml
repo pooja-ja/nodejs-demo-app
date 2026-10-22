@@ -28,5 +28,6 @@ jobs:
         secrets: inherit 
 
     deploy-on-push:
+        needs: [docker-push]
         uses: ./.github/workflows/deploy.yml
         secrets: inherit
