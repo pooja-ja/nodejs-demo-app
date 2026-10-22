@@ -20,4 +20,9 @@ jobs:
         secrets: inherit 
 
     code-tests:
-        uses: ./.github/workflows/code-tests.yml    
+        uses: ./.github/workflows/code-tests.yml   
+
+    docker-push:
+        uses: ./.github/workflows/docker-push.yml
+        needs: [code-tests,docker-checks,dependency-checks,secret-scanning]
+        secrets: inherit 
