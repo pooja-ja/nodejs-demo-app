@@ -5,7 +5,7 @@ on:
     workflow_call:
 
 jobs:
-    frontend:
+    dockerhub push:
         # Github runner
         runs-on: ubuntu-latest
         strategy:
