@@ -27,6 +27,6 @@ jobs:
 #        needs: [docker-checks,dependency-checks,secret-scanning]
         secrets: inherit 
 
-    deploy on push:
+    deploy-on-push:
         uses: ./.github/workflows/deploy.yml
         secrets: inherit
