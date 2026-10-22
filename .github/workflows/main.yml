@@ -1,0 +1,17 @@
+
+name: CI with DevSecOps 
+
+on:
+    push:
+        branches: [master]
+
+jobs:
+
+    ## ---- CI ----
+    # Code Stage 
+    code-quality:
+        uses: ./.github/workflows/code-quality.yml
+
+    # Secret Scanning
+    secret-scanning:
+        uses: ./.github/workflows/secret-scanning.yml
