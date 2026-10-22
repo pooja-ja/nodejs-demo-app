@@ -18,6 +18,9 @@ jobs:
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
 
             - name: Deploy the containers with Docker Compose
+              env:
+                DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+                IMAGE_TAG: ${{ github.sha }}
               run: |
                 docker-compose pull
                 docker-compose up -d

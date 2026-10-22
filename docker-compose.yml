@@ -1,8 +1,6 @@
 services:
   app:
-    container_name: app
-    build:
-      context: .
-      dockerfile: Dockerfile
+#    container_name: app
+    image: ${DOCKERHUB_USERNAME}/node-app:${IMAGE_TAG}
     ports:
       - "3000:3000"
