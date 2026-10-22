@@ -57,3 +57,5 @@ Trigger: push to `main` (plus `workflow_call`).
 3. **Access the application**
 
 Once the containers are up, you can access the app at: [http://localhost:3000](http://localhost:3000)
+![snapshot](images/1.jpeg)
+![snapshot](images/2.jpeg)
