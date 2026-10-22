@@ -21,4 +21,5 @@ jobs:
               run: npm ci
 
             - name: Run Tests
-              run: npm test 
+              run: npm run test
+              working-directory: ./tests
